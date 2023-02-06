@@ -20,34 +20,16 @@
             <table class="table table-striped" id="directoryTable">
                 <thead>
                     <tr>
-                        
+                        <!-- Table Headers -->
                         <th>Photo</th>
                         <th>Personal Information</th>
                         <th>Address</th>
                         <th>Contact</th>
                         <th>Credentials</th>
-                        <th>Registration</th>
-                        
-                    
-
-                        
+                        <th>Registration</th> 
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- <tr>
-                        <td><img src="https://placekitten.com/100/100" alt=""></td>
-                        <td>Meow Moew Fuzzy Face</td>
-                        <td>Male</td>
-                        <td>3456 Road Street <br> Los Angeles, CA. 90023</td>
-                        <td>555-555-5555</td>
-                        <td>555-555-5555</td>
-                        <td>bla@fu.com</td>
-                        <td>brattyCatty <br> password <br> salt <br> md5 <br> sha1 <br> sha256</td>
-                        <td>8/8/17</td>
-                        <td>Age</td>
-                        <td>Registration</td>
-                        <td>123456789</td>
-                    </tr> -->
                 </tbody>
             </table>
         </div>
@@ -60,7 +42,7 @@
     d3.csv("hr-directory.csv",function(data) {
         console.log(data);
 
-    // append the data to the table
+//    Table Data
    let row = '<tr>';
     row += '<td><img src="' + data['picture.medium'] 
         + '"></td>';  
