@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+
+
+    <title>HR Directory</title>
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>HR Directory</h1>
+
+        <div id="directory">
+            <table class="table table-striped" id="directoryTable">
+                <thead>
+                    <tr>
+                        <th>Photo</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Department</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="https://placekitten.com/100/100" alt=""></td>
+                        <td>John</td>
+                        <td>Smith</td>
+                        <td>Accounting</td>
+                        <td>555-555-5555</td>
+                        <td>bla@fu.com</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+</body>
+
+<script>
+    d3.csv("hr-directory.csv").then(function(data) {
+        console.log(data);
+    });
+ 
+    let row = '<tr>';
+    row += '<td><img src="https://placekitten.com/100/100" alt=""></td>';
+    row += '<td>John</td>';
+    row += '<td>Smith</td>';    
+    row += '<td>Accounting</td>';
+    row += '<td>555-555-5555</td>';
+    row += '<td>bla.fu.com</td>';
+    row += '</tr>';
+
+    d3.select("#directoryTable tbody").append(row);
+    
+
+    
+</script>
+</html>                                                                                   
