@@ -20,23 +20,34 @@
             <table class="table table-striped" id="directoryTable">
                 <thead>
                     <tr>
+                        
                         <th>Photo</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Department</th>
-                        <th>Phone</th>
-                        <th>Email</th>
+                        <th>Personal Information</th>
+                        <th>Address</th>
+                        <th>Contact</th>
+                        <th>Credentials</th>
+                        <th>Registration</th>
+                        
+                    
+
+                        
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <!-- <tr>
                         <td><img src="https://placekitten.com/100/100" alt=""></td>
-                        <td>John</td>
-                        <td>Smith</td>
-                        <td>Accounting</td>
+                        <td>Meow Moew Fuzzy Face</td>
+                        <td>Male</td>
+                        <td>3456 Road Street <br> Los Angeles, CA. 90023</td>
+                        <td>555-555-5555</td>
                         <td>555-555-5555</td>
                         <td>bla@fu.com</td>
-                    </tr>
+                        <td>brattyCatty <br> password <br> salt <br> md5 <br> sha1 <br> sha256</td>
+                        <td>8/8/17</td>
+                        <td>Age</td>
+                        <td>Registration</td>
+                        <td>123456789</td>
+                    </tr> -->
                 </tbody>
             </table>
         </div>
@@ -45,22 +56,41 @@
 </body>
 
 <script>
-    d3.csv("hr-directory.csv").then(function(data) {
+
+    d3.csv("hr-directory.csv",function(data) {
         console.log(data);
+
+    // append the data to the table
+   let row = '<tr>';
+    row += '<td><img src="' + data['picture.medium'] 
+        + '"></td>';  
+    row += '<td>' +"<b> Name: </b> " + data['name.title'] + " " + data['name.first'] 
+        + " " + data['name.last']  + "<br/> <b> Gender: </b> " + data['gender'] 
+        + "<br>" + "<b> DOB: </b> " + data['dob.date'] + "<br>" + "<b>Age:</b> " 
+        + data['dob.age']
+        +'</td>';
+    row += '<td>' + data['location.street.number'] + " " + data['location.street.name'] 
+        + " " + data['location.city'] + " " + data['location.state'] + ", " 
+        + data['location.postcode'] + " " + data['location.country'] + " " 
+        + '</td>';
+    row += '<td>' + "<b> Phone: </b> " + data['phone'] + "<br>" 
+        + "<b> Cell: </b> " 
+        + data['cell'] + "<br>" + "<b>Email:</b> " + data['email']
+        +'</td>';
+    row += '<td>' +  "<b> UUID: </b> " + data['login.uuid'] + "<br/>" 
+        +"<b> User Name: </b> " + data['login.username'] + "<br/>"
+        + "<b> Password: </b> " + data['login.password'] + "<br/>"
+        + "<b> Salt: </b> " + data['login.salt'] + "<br/>"
+        + "<b> MD5: </b> " + data['login.md5'] + "<br/>"
+        + "<b> SHA1: </b> " + data['login.sha1'] + "<br/>"
+        + "<b> SHA256: </b> " + data['login.sha256'] + "<br/>"
+        + '</td>';
+    row += '<td>' +  "<b> Registered: </b> " + data['registered.date'] + "<br/>" 
+        + "<b> Registration Age: </b> " + data['registered.age'] + "<br/>"
+        + '</td>';
+    row += '</tr>';
+    d3.select("#directoryTable tbody").append("tr").html(row);
     });
  
-    let row = '<tr>';
-    row += '<td><img src="https://placekitten.com/100/100" alt=""></td>';
-    row += '<td>John</td>';
-    row += '<td>Smith</td>';    
-    row += '<td>Accounting</td>';
-    row += '<td>555-555-5555</td>';
-    row += '<td>bla.fu.com</td>';
-    row += '</tr>';
-
-    d3.select("#directoryTable tbody").append(row);
-    
-
-    
 </script>
-</html>                                                                                   
+</html>                                                                               
